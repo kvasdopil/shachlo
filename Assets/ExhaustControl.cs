@@ -13,11 +13,11 @@ public class ExhaustControl : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		float m_rotation = Input.GetAxis("Horizontal");
 		float m_movement = Input.GetAxis("Vertical");
 
-		if (m_movement > 0.1) {
+		if (m_movement > 0.01) {
 			if (!m_back.isPlaying) {
 				m_back.Play();
 			}
@@ -29,7 +29,7 @@ public class ExhaustControl : MonoBehaviour {
 
 		for (int i = 0; i < m_fwd.Length; i++) {
 			bool playing = m_fwd[i].isPlaying;
-			bool shouldPlay = (m_movement < -0.1);
+			bool shouldPlay = (m_movement < -0.01);
 
 			if (playing && !shouldPlay) {
 				m_fwd[i].Stop();
